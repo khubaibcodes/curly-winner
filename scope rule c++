@@ -1,0 +1,61 @@
+#include<iostream>
+using namespace std;
+void local_example();
+void global_example();
+void static_local_example();
+int num{300};
+void global_example(){
+    cout<<"global ecample is "<<num<<" in - start"<<endl;
+    num*=2;
+    cout<<"global ecample is "<<num<<" in - end"<<endl;
+}
+
+void local_example(int x){
+    int nun=1000;
+
+    cout << "Local variable: " <<num<<" in local example - start "<<endl;
+    num=x;
+    cout << "Local variable: " <<num<<" in local example - end "<<endl;
+}
+void static_local_example(){
+    static int num{5000};
+    cout<<"static local num is "<<num<<" in start"<<endl;
+    num+=1000;
+    cout<<"static local num is "<<num<<" in end"<<endl;
+ 
+}
+
+int main(){
+    int num{100};
+    int num1{500};
+    cout<<"The local num is "<<num<<" in main"<<endl;
+    {
+        int num{200};
+        cout<<"The local num is "<<num<<" in block"<<endl;
+        cout<<"local num1 is "<<num1<<" in main "<<endl;
+
+    }
+    cout<<"local num is "<<num<<" in main"<<endl;
+
+    local_example(10);
+    cout<<endl;
+    local_example(20);
+
+    cout<<"-----------------------------"<<endl;
+
+    global_example();
+    cout<<endl;
+    global_example();
+
+    cout<<"-----------------------------"<<endl;
+    static_local_example();
+    cout<<endl;
+    static_local_example();
+    cout<<endl;
+    static_local_example();
+    cout<<endl;
+
+
+
+    
+}
